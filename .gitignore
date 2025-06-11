@@ -1,0 +1,10 @@
+venv/
+downloads/
+temp/
+logs/
+__pycache__/
+
+token_cache.json
+.env
+garbage.py
+test_data.py
