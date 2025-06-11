@@ -1,0 +1,4031 @@
+﻿{
+  "activities": {
+    "rootSchemaName": "Activity",
+    "operationType": 0,
+    "includeProcessExecutionData": true,
+    "filters": {
+      "items": {
+        "6e11d8a7-f1ce-434f-8bf7-2ba016568326": {
+          "items": {
+            "FixedFilters": {
+              "items": {},
+              "logicalOperation": 0,
+              "isEnabled": true,
+              "filterType": 6
+            },
+            "CustomFilters": {
+              "items": {
+                "09873e0e-f308-4681-8a30-20752ef19cfd": {
+                  "filterType": 4,
+                  "comparisonType": 3,
+                  "isEnabled": true,
+                  "trimDateTimeParameterToDate": false,
+                  "leftExpression": {
+                    "expressionType": 0,
+                    "columnPath": "Status"
+                  },
+                  "rightExpressions": [
+                    {
+                      "expressionType": 2,
+                      "parameter": {
+                        "dataValueType": 10,
+                        "value": "384d4b84-58e6-df11-971b-001d60e938c6"
+                      }
+                    },
+                    {
+                      "expressionType": 2,
+                      "parameter": {
+                        "dataValueType": 10,
+                        "value": "394d4b84-58e6-df11-971b-001d60e938c6"
+                      }
+                    }
+                  ]
+                },
+                "25e62ff1-eb20-4188-8ff5-3c3ee1381be2": {
+                  "filterType": 4,
+                  "comparisonType": 3,
+                  "isEnabled": true,
+                  "trimDateTimeParameterToDate": false,
+                  "leftExpression": {
+                    "expressionType": 0,
+                    "columnPath": "Document.Type"
+                  },
+                  "rightExpressions": [
+                    {
+                      "expressionType": 2,
+                      "parameter": {
+                        "dataValueType": 10,
+                        "value": "e75773a6-aeb5-4766-890b-faee03eb151b"
+                      }
+                    }
+                  ]
+                },
+                "5e18cf58-8be8-4ba2-b4aa-a0a152e7a98c": {
+                  "filterType": 4,
+                  "comparisonType": 3,
+                  "isEnabled": true,
+                  "trimDateTimeParameterToDate": false,
+                  "leftExpression": {
+                    "expressionType": 0,
+                    "columnPath": "Owner"
+                  },
+                  "rightExpressions": [
+                    {
+                      "expressionType": 2,
+                      "parameter": {
+                        "dataValueType": 10,
+                        "value": "324c90ac-f8c6-418a-8b94-80cc738ea3af"
+                      }
+                    },
+                    {
+                      "expressionType": 2,
+                      "parameter": {
+                        "dataValueType": 10,
+                        "value": "6d56c597-13c6-489f-a57f-27f254e1ef30"
+                      }
+                    },
+                    {
+                      "expressionType": 2,
+                      "parameter": {
+                        "dataValueType": 10,
+                        "value": "984b5841-8f3b-49df-a729-dc9764282551"
+                      }
+                    },
+                    {
+                      "expressionType": 2,
+                      "parameter": {
+                        "dataValueType": 10,
+                        "value": "10318166-038e-4205-bc3c-e17760937704"
+                      }
+                    }
+                  ]
+                },
+                "04678f59-44af-4043-a174-7c9bd47d1e99": {
+                  "filterType": 2,
+                  "comparisonType": 2,
+                  "isEnabled": true,
+                  "trimDateTimeParameterToDate": false,
+                  "leftExpression": {
+                    "expressionType": 0,
+                    "columnPath": "Guarantee"
+                  },
+                  "isNull": false
+                }
+              },
+              "logicalOperation": 0,
+              "isEnabled": true,
+              "filterType": 6,
+              "rootSchemaName": "Activity"
+            },
+            "NotEmailFilter": {
+              "filterType": 1,
+              "comparisonType": 4,
+              "isEnabled": true,
+              "trimDateTimeParameterToDate": false,
+              "leftExpression": {
+                "expressionType": 0,
+                "columnPath": "Type"
+              },
+              "rightExpression": {
+                "expressionType": 2,
+                "parameter": {
+                  "dataValueType": 1,
+                  "value": "e2831dec-cfc0-df11-b00f-001d60e938c6"
+                }
+              }
+            }
+          },
+          "logicalOperation": 0,
+          "isEnabled": true,
+          "filterType": 6
+        }
+      },
+      "logicalOperation": 0,
+      "isEnabled": true,
+      "filterType": 6
+    },
+    "columns": {
+      "items": {
+        "Id": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Id"
+          }
+        },
+        "Title": {
+          "caption": "",
+          "orderDirection": 1,
+          "orderPosition": 1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Title"
+          }
+        },
+        "Account": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Account"
+          }
+        },
+        "StartDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "StartDate"
+          }
+        },
+        "DueDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "DueDate"
+          }
+        },
+        "ShowInScheduler": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "ShowInScheduler"
+          }
+        },
+        "Status": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Status"
+          }
+        },
+        "Status.Finish": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Status.Finish"
+          }
+        },
+        "ProcessElementId": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "ProcessElementId"
+          }
+        },
+        "Guarantee": {
+          "caption": "Заявление",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Guarantee"
+          }
+        },
+        "CreatedOn": {
+          "caption": "Дата создания",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CreatedOn"
+          }
+        },
+        "Owner": {
+          "caption": "Ответственный",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Owner"
+          }
+        },
+        "GarantyProject": {
+          "caption": "Проект",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "GarantyProject"
+          }
+        },
+        "Document.Type": {
+          "caption": "Документ.Тип",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Document.Type"
+          }
+        },
+        "Type": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Type"
+          }
+        },
+        "EntryPointsCount": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 3,
+            "aggregationType": 1,
+            "columnPath": "[EntryPoint:EntityId].Id",
+            "subFilters": {
+              "items": {
+                "0afaec70-5ba3-49ef-b9b2-8d93bf49a261": {
+                  "filterType": 1,
+                  "comparisonType": 3,
+                  "isEnabled": true,
+                  "trimDateTimeParameterToDate": false,
+                  "leftExpression": {
+                    "expressionType": 0,
+                    "columnPath": "IsActive"
+                  },
+                  "rightExpression": {
+                    "expressionType": 2,
+                    "parameter": {
+                      "dataValueType": 1,
+                      "value": true
+                    }
+                  }
+                }
+              },
+              "logicalOperation": 0,
+              "isEnabled": true,
+              "filterType": 6
+            }
+          }
+        }
+      }
+    },
+    "isDistinct": false,
+    "rowCount": 30,
+    "rowsOffset": 0,
+    "isPageable": true,
+    "allColumns": false,
+    "useLocalization": true,
+    "useRecordDeactivation": false,
+    "serverESQCacheParameters": {
+      "cacheLevel": 0,
+      "cacheGroup": "",
+      "cacheItemName": ""
+    },
+    "queryOptimize": false,
+    "useMetrics": false,
+    "querySource": 0,
+    "ignoreDisplayValues": false,
+    "conditionalValues": null,
+    "isHierarchical": false
+  },
+  "guarantee": {
+    "rootSchemaName": "Guarantee",
+    "operationType": 0,
+    "includeProcessExecutionData": true,
+    "filters": {
+      "items": {
+        "primaryColumnFilter": {
+          "filterType": 1,
+          "comparisonType": 3,
+          "isEnabled": true,
+          "trimDateTimeParameterToDate": false,
+          "leftExpression": {
+            "expressionType": 1,
+            "functionType": 1,
+            "macrosType": 34
+          },
+          "rightExpression": {
+            "expressionType": 2,
+            "parameter": {
+              "dataValueType": 0,
+              "value": "{guarantee_id}"
+            }
+          }
+        }
+      },
+      "logicalOperation": 0,
+      "isEnabled": true,
+      "filterType": 6
+    },
+    "columns": {
+      "items": {
+        "Id": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Id"
+          }
+        },
+        "Number": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Number"
+          }
+        },
+        "CreatedOn": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CreatedOn"
+          }
+        },
+        "CreatedBy": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CreatedBy"
+          }
+        },
+        "ModifiedOn": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "ModifiedOn"
+          }
+        },
+        "ModifiedBy": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "ModifiedBy"
+          }
+        },
+        "ProcessListeners": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "ProcessListeners"
+          }
+        },
+        "Name": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Name"
+          }
+        },
+        "RegistrationDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "RegistrationDate"
+          }
+        },
+        "PlanDueDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "PlanDueDate"
+          }
+        },
+        "DueDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "DueDate"
+          }
+        },
+        "Customer": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Customer"
+          }
+        },
+        "CustomerRegistrationDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CustomerRegistrationDate"
+          }
+        },
+        "BusinessPlaceVisitingDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "BusinessPlaceVisitingDate"
+          }
+        },
+        "Inspector": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Inspector"
+          }
+        },
+        "Inspector2": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Inspector2"
+          }
+        },
+        "Inspector3": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Inspector3"
+          }
+        },
+        "GarantyProject": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "GarantyProject"
+          }
+        },
+        "Owner": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Owner"
+          }
+        },
+        "Filial": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Filial"
+          }
+        },
+        "StatementStage": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "StatementStage"
+          }
+        },
+        "StatementState": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "StatementState"
+          }
+        },
+        "Bank": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Bank"
+          }
+        },
+        "GuaranteeAmount": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "GuaranteeAmount"
+          }
+        },
+        "StatementDirection": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "StatementDirection"
+          }
+        },
+        "FundingProgram": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "FundingProgram"
+          }
+        },
+        "GuaranteeType": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "GuaranteeType"
+          }
+        },
+        "GuaranteePeriod": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "GuaranteePeriod"
+          }
+        },
+        "GuaranteePeriodYears": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "GuaranteePeriodYears"
+          }
+        },
+        "GuaranteePeriodMonths": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "GuaranteePeriodMonths"
+          }
+        },
+        "IsComplianceToGuaranteeProgram": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "IsComplianceToGuaranteeProgram"
+          }
+        },
+        "ProgramCondition": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "ProgramCondition"
+          }
+        },
+        "CreditAmount": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CreditAmount"
+          }
+        },
+        "BankProductType": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "BankProductType"
+          }
+        },
+        "CreditingPurpose": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CreditingPurpose"
+          }
+        },
+        "AwardRate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "AwardRate"
+          }
+        },
+        "RepaymentOrder": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "RepaymentOrder"
+          }
+        },
+        "AwardRepaymentOrder": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "AwardRepaymentOrder"
+          }
+        },
+        "RepaymentDescription": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "RepaymentDescription"
+          }
+        },
+        "AwardRepaymentDescription": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "AwardRepaymentDescription"
+          }
+        },
+        "CreditRepaymentOrder": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CreditRepaymentOrder"
+          }
+        },
+        "CreditRepaymentDescription": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CreditRepaymentDescription"
+          }
+        },
+        "BankApplicationDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "BankApplicationDate"
+          }
+        },
+        "CreditPeriod": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CreditPeriod"
+          }
+        },
+        "CreditPeriodYears": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CreditPeriodYears"
+          }
+        },
+        "CreditPeriodMonths": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CreditPeriodMonths"
+          }
+        },
+        "CreditDueDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CreditDueDate"
+          }
+        },
+        "BankRegistrationTermDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "BankRegistrationTermDate"
+          }
+        },
+        "GuaranteeCancelCondition": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "GuaranteeCancelCondition"
+          }
+        },
+        "OtherCondition": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "OtherCondition"
+          }
+        },
+        "EliminationLegalCommentOrder": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "EliminationLegalCommentOrder"
+          }
+        },
+        "SpecialConditions": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "SpecialConditions"
+          }
+        },
+        "IsNeedToApprove": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "IsNeedToApprove"
+          }
+        },
+        "CoordinationResult": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CoordinationResult"
+          }
+        },
+        "ApprovedBy": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "ApprovedBy"
+          }
+        },
+        "ApprovedDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "ApprovedDate"
+          }
+        },
+        "ProgramConditionStr": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "ProgramConditionStr"
+          }
+        },
+        "PEPrequestNumber": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "PEPrequestNumber"
+          }
+        },
+        "GuaranteeProvision": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "GuaranteeProvision"
+          }
+        },
+        "KNO": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "KNO"
+          }
+        },
+        "IPRegDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "IPRegDate"
+          }
+        },
+        "ResDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "ResDate"
+          }
+        },
+        "ProcDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "ProcDate"
+          }
+        },
+        "ActivKind": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "ActivKind"
+          }
+        },
+        "IPAddress": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "IPAddress"
+          }
+        },
+        "SerRegNumIP": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "SerRegNumIP"
+          }
+        },
+        "RegNumIP": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "RegNumIP"
+          }
+        },
+        "IssueRegDateIP": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "IssueRegDateIP"
+          }
+        },
+        "DelRegDateIP": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "DelRegDateIP"
+          }
+        },
+        "ReasonRegIP": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "ReasonRegIP"
+          }
+        },
+        "TaxAuthorityIP": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "TaxAuthorityIP"
+          }
+        },
+        "TaxAuthorityDateIP": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "TaxAuthorityDateIP"
+          }
+        },
+        "DelTaxAuthorityDateIP": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "DelTaxAuthorityDateIP"
+          }
+        },
+        "ReasonTaxAuthorityIP": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "ReasonTaxAuthorityIP"
+          }
+        },
+        "SuspensionStartDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "SuspensionStartDate"
+          }
+        },
+        "SuspensionEndDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "SuspensionEndDate"
+          }
+        },
+        "InactivIP": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "InactivIP"
+          }
+        },
+        "DateInactivIP": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "DateInactivIP"
+          }
+        },
+        "DelDateInactivIP": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "DelDateInactivIP"
+          }
+        },
+        "StartBadIPDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "StartBadIPDate"
+          }
+        },
+        "EndBadIPDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "EndBadIPDate"
+          }
+        },
+        "lisenceNumber": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "lisenceNumber"
+          }
+        },
+        "NIKAD": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "NIKAD"
+          }
+        },
+        "GlobalUniqueNumber": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "GlobalUniqueNumber"
+          }
+        },
+        "GUIDNIKAD": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "GUIDNIKAD"
+          }
+        },
+        "lisence": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "lisence"
+          }
+        },
+        "ActivityType": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "ActivityType"
+          }
+        },
+        "FirstDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "FirstDate"
+          }
+        },
+        "lastDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "lastDate"
+          }
+        },
+        "IssueDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "IssueDate"
+          }
+        },
+        "ReturnDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "ReturnDate"
+          }
+        },
+        "SuspensionDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "SuspensionDate"
+          }
+        },
+        "totalArrear": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "totalArrear"
+          }
+        },
+        "TotalTaxArrear": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "TotalTaxArrear"
+          }
+        },
+        "pensionContributionArrear": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "pensionContributionArrear"
+          }
+        },
+        "socialContributionArrear": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "socialContributionArrear"
+          }
+        },
+        "NotTakeContributionArrear": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "NotTakeContributionArrear"
+          }
+        },
+        "appealledAmount": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "appealledAmount"
+          }
+        },
+        "modifiedTermsAmount": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "modifiedTermsAmount"
+          }
+        },
+        "rehabilitaionProcedureAmount": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "rehabilitaionProcedureAmount"
+          }
+        },
+        "charCode": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "charCode"
+          }
+        },
+        "nameRu": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "nameRu"
+          }
+        },
+        "nameKz": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "nameKz"
+          }
+        },
+        "reportAcrualDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "reportAcrualDate"
+          }
+        },
+        "taxTotalArrear": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "taxTotalArrear"
+          }
+        },
+        "taxTotalTaxArrear": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "taxTotalTaxArrear"
+          }
+        },
+        "taxPensionContributionArrear": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "taxPensionContributionArrear"
+          }
+        },
+        "taxSocialContributionArrear": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "taxSocialContributionArrear"
+          }
+        },
+        "taxAppealledAmount": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "taxAppealledAmount"
+          }
+        },
+        "taxModifiedTermsAmount": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "taxModifiedTermsAmount"
+          }
+        },
+        "taxRehabilitaionProcAmount": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "taxRehabilitaionProcAmount"
+          }
+        },
+        "bcc": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "bcc"
+          }
+        },
+        "bccNameRu": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "bccNameRu"
+          }
+        },
+        "bccNameKz": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "bccNameKz"
+          }
+        },
+        "bccTaxArrear": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "bccTaxArrear"
+          }
+        },
+        "bccPoenaArrear": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "bccPoenaArrear"
+          }
+        },
+        "bccFineArrear": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "bccFineArrear"
+          }
+        },
+        "bccTotalArrear": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "bccTotalArrear"
+          }
+        },
+        "Notes": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Notes"
+          }
+        },
+        "IsDocumentRegistration": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "IsDocumentRegistration"
+          }
+        },
+        "IsEditDocumentRegistration": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "IsEditDocumentRegistration"
+          }
+        },
+        "CancelReason": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CancelReason"
+          }
+        },
+        "CorelationId": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CorelationId"
+          }
+        },
+        "RequestSystemId": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "RequestSystemId"
+          }
+        },
+        "OdGracePeriod": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "OdGracePeriod"
+          }
+        },
+        "PeriodOfAvailability": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "PeriodOfAvailability"
+          }
+        },
+        "Address": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Address"
+          }
+        },
+        "City": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "City"
+          }
+        },
+        "District": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "District"
+          }
+        },
+        "Region": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Region"
+          }
+        },
+        "GuaranteeCancelConditionDg": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "GuaranteeCancelConditionDg"
+          }
+        },
+        "EliminationLegalCommentOrderDg": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "EliminationLegalCommentOrderDg"
+          }
+        },
+        "OtherConditionDg": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "OtherConditionDg"
+          }
+        },
+        "BankRegistrationTermDateDg": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "BankRegistrationTermDateDg"
+          }
+        },
+        "CoordinationResultDg": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CoordinationResultDg"
+          }
+        },
+        "ApprovedDateDg": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "ApprovedDateDg"
+          }
+        },
+        "RfCoordinationResult": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "RfCoordinationResult"
+          }
+        },
+        "RfApprovedBy": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "RfApprovedBy"
+          }
+        },
+        "RfApprovedDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "RfApprovedDate"
+          }
+        },
+        "ApprovingAppDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "ApprovingAppDate"
+          }
+        },
+        "GuaranteeAmountRf": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "GuaranteeAmountRf"
+          }
+        },
+        "GuaranteeAmountDg": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "GuaranteeAmountDg"
+          }
+        },
+        "GuaranteePeriodRf": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "GuaranteePeriodRf"
+          }
+        },
+        "GuaranteePeriodDg": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "GuaranteePeriodDg"
+          }
+        },
+        "BankCompletionQuantity": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "BankCompletionQuantity"
+          }
+        },
+        "BankRefusedQuantity": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "BankRefusedQuantity"
+          }
+        },
+        "ParentGuarantee": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "ParentGuarantee"
+          }
+        },
+        "MasterParentGuarantee": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "MasterParentGuarantee"
+          }
+        },
+        "IsStatementProcessing": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "IsStatementProcessing"
+          }
+        },
+        "IsEditStatementProcessing": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "IsEditStatementProcessing"
+          }
+        },
+        "RepaymentAmount": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "RepaymentAmount"
+          }
+        },
+        "ProjectGuaranteeAmount": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "ProjectGuaranteeAmount"
+          }
+        },
+        "NPPResult": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "NPPResult"
+          }
+        },
+        "NPPOpinion": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "NPPOpinion"
+          }
+        },
+        "NPPVisingDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "NPPVisingDate"
+          }
+        },
+        "GuaranteeProgram": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "GuaranteeProgram"
+          }
+        },
+        "FreePledgeAmountRest": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "FreePledgeAmountRest"
+          }
+        },
+        "BankPledgeAmount": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "BankPledgeAmount"
+          }
+        },
+        "CreditCoveringPercent": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CreditCoveringPercent"
+          }
+        },
+        "CoveringPercentWithFund": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CoveringPercentWithFund"
+          }
+        },
+        "FreeGuaranteeAmountRest": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "FreeGuaranteeAmountRest"
+          }
+        },
+        "FundMortgageAmount": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "FundMortgageAmount"
+          }
+        },
+        "GarantyCoveringPercent": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "GarantyCoveringPercent"
+          }
+        },
+        "DamuBlitz": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "DamuBlitz"
+          }
+        },
+        "DgOwner": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "DgOwner"
+          }
+        },
+        "PurposeDescription": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "PurposeDescription"
+          }
+        },
+        "OdGracePeriodStr": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "OdGracePeriodStr"
+          }
+        },
+        "RefuseReason": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "RefuseReason"
+          }
+        },
+        "IncomeForRegistrationDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "IncomeForRegistrationDate"
+          }
+        },
+        "IncomeForStartDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "IncomeForStartDate"
+          }
+        },
+        "IncomeGrowthPercent": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "IncomeGrowthPercent"
+          }
+        },
+        "TaxForRegistrationDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "TaxForRegistrationDate"
+          }
+        },
+        "TaxForStartDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "TaxForStartDate"
+          }
+        },
+        "TaxGrowthPercent": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "TaxGrowthPercent"
+          }
+        },
+        "AverageNumberForRegDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "AverageNumberForRegDate"
+          }
+        },
+        "AverageNumberForMonitoring": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "AverageNumberForMonitoring"
+          }
+        },
+        "AverageNumberGrowthPercent": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "AverageNumberGrowthPercent"
+          }
+        },
+        "OutcomeForRegDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "OutcomeForRegDate"
+          }
+        },
+        "OutcomeForMonitoring": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "OutcomeForMonitoring"
+          }
+        },
+        "OutcomeGrowthPercent": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "OutcomeGrowthPercent"
+          }
+        },
+        "OutcomeTaxForRegDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "OutcomeTaxForRegDate"
+          }
+        },
+        "OutcomeTaxForMonitoring": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "OutcomeTaxForMonitoring"
+          }
+        },
+        "OutcomeTaxGrowthPercent": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "OutcomeTaxGrowthPercent"
+          }
+        },
+        "CancelReasonKz": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CancelReasonKz"
+          }
+        },
+        "TerrasoftID": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "TerrasoftID"
+          }
+        },
+        "GuaranteeAmountChKKStrKzRf": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "GuaranteeAmountChKKStrKzRf"
+          }
+        },
+        "GuaranteeAmountChKKStrKzDg": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "GuaranteeAmountChKKStrKzDg"
+          }
+        },
+        "GuaranteePeriodChKKStrKzRf": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "GuaranteePeriodChKKStrKzRf"
+          }
+        },
+        "GuaranteePeriodChKKStrKzDg": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "GuaranteePeriodChKKStrKzDg"
+          }
+        },
+        "CreditAmountStrKzRf": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CreditAmountStrKzRf"
+          }
+        },
+        "CreditAmountStrKzDg": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CreditAmountStrKzDg"
+          }
+        },
+        "PurposeDescriptionKzRf": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "PurposeDescriptionKzRf"
+          }
+        },
+        "PurposeDescriptionKzDg": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "PurposeDescriptionKzDg"
+          }
+        },
+        "RepaymentDescriptionKzRf": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "RepaymentDescriptionKzRf"
+          }
+        },
+        "RepaymentDescriptionKzDg": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "RepaymentDescriptionKzDg"
+          }
+        },
+        "OdGracePeriodStrKzRf": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "OdGracePeriodStrKzRf"
+          }
+        },
+        "OdGracePeriodStrKzDg": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "OdGracePeriodStrKzDg"
+          }
+        },
+        "AwardRepaymentDescriptionKzRf": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "AwardRepaymentDescriptionKzRf"
+          }
+        },
+        "AwardRepaymentDescriptionKzDg": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "AwardRepaymentDescriptionKzDg"
+          }
+        },
+        "CreditPeriodStrKzRf": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CreditPeriodStrKzRf"
+          }
+        },
+        "CreditPeriodStrKzDg": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CreditPeriodStrKzDg"
+          }
+        },
+        "FondRemovalProcedureKzRf": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "FondRemovalProcedureKzRf"
+          }
+        },
+        "FondRemovalProcedureKzDg": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "FondRemovalProcedureKzDg"
+          }
+        },
+        "OtherConditionKzRf": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "OtherConditionKzRf"
+          }
+        },
+        "OtherConditionKzDg": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "OtherConditionKzDg"
+          }
+        },
+        "BancProcessingTimeKzRf": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "BancProcessingTimeKzRf"
+          }
+        },
+        "BancProcessingTimeKzDg": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "BancProcessingTimeKzDg"
+          }
+        },
+        "GarantyCloseReason": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "GarantyCloseReason"
+          }
+        },
+        "IsExecutedRequirment": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "IsExecutedRequirment"
+          }
+        },
+        "RequirmentAmount": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "RequirmentAmount"
+          }
+        },
+        "RequirmentDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "RequirmentDate"
+          }
+        },
+        "SpecialInformation": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "SpecialInformation"
+          }
+        },
+        "IsRepeatedClient": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "IsRepeatedClient"
+          }
+        },
+        "Colsultant": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Colsultant"
+          }
+        },
+        "BankManagerName": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "BankManagerName"
+          }
+        },
+        "PgpDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "PgpDate"
+          }
+        },
+        "PossibilityLetterDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "PossibilityLetterDate"
+          }
+        },
+        "MioLetterDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "MioLetterDate"
+          }
+        },
+        "DamuProjectStatus": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "DamuProjectStatus"
+          }
+        },
+        "ExecutorController": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "ExecutorController"
+          }
+        },
+        "RequirmentComment": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "RequirmentComment"
+          }
+        },
+        "Opportunity": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Opportunity"
+          }
+        },
+        "Product": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Product"
+          }
+        },
+        "IsBeforeBankGaranty": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "IsBeforeBankGaranty"
+          }
+        },
+        "DontSendTo1C": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "DontSendTo1C"
+          }
+        },
+        "UsrIsOrNot": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "UsrIsOrNot"
+          }
+        },
+        "ReworkKK": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "ReworkKK"
+          }
+        },
+        "LastVisaDirectiveDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "LastVisaDirectiveDate"
+          }
+        },
+        "SendToReworkKK": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "SendToReworkKK"
+          }
+        },
+        "ProcessLow60": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "ProcessLow60"
+          }
+        },
+        "PortGuarantee": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "PortGuarantee"
+          }
+        },
+        "RestructuringOfExistingObligations": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "RestructuringOfExistingObligations"
+          }
+        },
+        "Litigation": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Litigation"
+          }
+        },
+        "ArrestsOnAccounts": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "ArrestsOnAccounts"
+          }
+        },
+        "RestructuringAvailability": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "RestructuringAvailability"
+          }
+        },
+        "CreditHistory": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CreditHistory"
+          }
+        },
+        "DebtToTheBudget": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "DebtToTheBudget"
+          }
+        },
+        "ConclusionSC": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "ConclusionSC"
+          }
+        },
+        "BusinessDiversification": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "BusinessDiversification"
+          }
+        },
+        "INFCollateral": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "INFCollateral"
+          }
+        },
+        "OwnerExperience": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "OwnerExperience"
+          }
+        },
+        "AvailabilityInfrastructure": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "AvailabilityInfrastructure"
+          }
+        },
+        "DependenceOnCustomers": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "DependenceOnCustomers"
+          }
+        },
+        "RevenuesOfBusiness": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "RevenuesOfBusiness"
+          }
+        },
+        "INFRating": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "INFRating"
+          }
+        },
+        "INFCharacteristic": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "INFCharacteristic"
+          }
+        },
+        "INFPoints": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "INFPoints"
+          }
+        },
+        "INFResult": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "INFResult"
+          }
+        },
+        "CharacteristicDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CharacteristicDate"
+          }
+        },
+        "RestructuringAvailabilityFalse": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "RestructuringAvailabilityFalse"
+          }
+        },
+        "ArrestsOnAccountsFalse": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "ArrestsOnAccountsFalse"
+          }
+        },
+        "LitigationFalse": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "LitigationFalse"
+          }
+        },
+        "RestructuringOfExistingObligationsFalse": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "RestructuringOfExistingObligationsFalse"
+          }
+        },
+        "SolutionBankDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "SolutionBankDate"
+          }
+        },
+        "NumberDG": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "NumberDG"
+          }
+        },
+        "ProgramName": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "ProgramName"
+          }
+        },
+        "DescriptionCreditAmount": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "DescriptionCreditAmount"
+          }
+        },
+        "DescriptionAwardRate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "DescriptionAwardRate"
+          }
+        },
+        "PsLinkToSOED": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "PsLinkToSOED"
+          }
+        },
+        "LoanTermUpTo": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "LoanTermUpTo"
+          }
+        },
+        "processed": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "processed"
+          }
+        },
+        "ProccessedDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "ProccessedDate"
+          }
+        },
+        "GuaranteeIssued": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "GuaranteeIssued"
+          }
+        },
+        "CreditPaid": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CreditPaid"
+          }
+        },
+        "ActivityCompleted": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "ActivityCompleted"
+          }
+        },
+        "UpdatedByService": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "UpdatedByService"
+          }
+        },
+        "CreatedByPKB": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CreatedByPKB"
+          }
+        },
+        "CreditInvestAmount": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CreditInvestAmount"
+          }
+        },
+        "CreditPosAmount": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CreditPosAmount"
+          }
+        },
+        "OverdueDebt": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "OverdueDebt"
+          }
+        },
+        "CurrentAssets": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CurrentAssets"
+          }
+        },
+        "LongTermAssets": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "LongTermAssets"
+          }
+        },
+        "CurrentLiabilities": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CurrentLiabilities"
+          }
+        },
+        "LongTermLiabilities": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "LongTermLiabilities"
+          }
+        },
+        "Equity": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Equity"
+          }
+        },
+        "BalanceCurrency": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "BalanceCurrency"
+          }
+        },
+        "CostPrice": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CostPrice"
+          }
+        },
+        "GrossIncome": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "GrossIncome"
+          }
+        },
+        "Expenses": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Expenses"
+          }
+        },
+        "NetProfit": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "NetProfit"
+          }
+        },
+        "CreditsRewardRepayment": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CreditsRewardRepayment"
+          }
+        },
+        "CreditsPrincipalDebtRepayment": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CreditsPrincipalDebtRepayment"
+          }
+        },
+        "RequestedCreditsRewardRepayment": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "RequestedCreditsRewardRepayment"
+          }
+        },
+        "RequestedCreditsPrincipalDebtRepayment": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "RequestedCreditsPrincipalDebtRepayment"
+          }
+        },
+        "INF_Recommendations": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "INF_Recommendations"
+          }
+        },
+        "QualityRating": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "QualityRating"
+          }
+        },
+        "QuantityRating": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "QuantityRating"
+          }
+        },
+        "CombinedRating": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CombinedRating"
+          }
+        },
+        "Revenue": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Revenue"
+          }
+        },
+        "INF_FinalRating": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "INF_FinalRating"
+          }
+        },
+        "INF_RatingModelAccountType": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "INF_RatingModelAccountType"
+          }
+        },
+        "LoanArrears6Month": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "LoanArrears6Month"
+          }
+        },
+        "LoanArrears24Month": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "LoanArrears24Month"
+          }
+        },
+        "DBZNumber": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "DBZNumber"
+          }
+        },
+        "DBZDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "DBZDate"
+          }
+        },
+        "GuaranteeEndDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "GuaranteeEndDate"
+          }
+        },
+        "Blacklist": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Blacklist"
+          }
+        },
+        "StopFactors": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "StopFactors"
+          }
+        },
+        "RestructuringType": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "RestructuringType"
+          }
+        },
+        "BankRestructuringDate": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "BankRestructuringDate"
+          }
+        },
+        "INFProjectPoint": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "INFProjectPoint"
+          }
+        },
+        "INFBorrowerCreditHistory": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "INFBorrowerCreditHistory"
+          }
+        },
+        "INFCoBorrowerCreditHistory": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "INFCoBorrowerCreditHistory"
+          }
+        },
+        "INFCreditHistoryComment": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "INFCreditHistoryComment"
+          }
+        },
+        "INFDRMCollateral": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "INFDRMCollateral"
+          }
+        },
+        "INFDRMRevenuesOfBussiness": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "INFDRMRevenuesOfBussiness"
+          }
+        },
+        "INFDRMCollateralComment": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "INFDRMCollateralComment"
+          }
+        },
+        "INFBorrowerSecurityDepartmentOpinion": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "INFBorrowerSecurityDepartmentOpinion"
+          }
+        },
+        "INFCoBorrowerSecurityDepartmentOpinion": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "INFCoBorrowerSecurityDepartmentOpinion"
+          }
+        },
+        "INFBorrowerWorkExpirience": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "INFBorrowerWorkExpirience"
+          }
+        },
+        "INFDRMNotes": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "INFDRMNotes"
+          }
+        },
+        "INFDRMOpinion": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "INFDRMOpinion"
+          }
+        },
+        "DRMrating": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "DRMrating"
+          }
+        },
+        "DRMcharacteristic": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "DRMcharacteristic"
+          }
+        },
+        "EstateObject": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "EstateObject"
+          }
+        },
+        "EstateObjectAddress": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "EstateObjectAddress"
+          }
+        },
+        "EstateObjectNumber": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "EstateObjectNumber"
+          }
+        },
+        "INFRegularDRMOpinion": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "INFRegularDRMOpinion"
+          }
+        },
+        "INFDRMOpinionNotRequired": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "INFDRMOpinionNotRequired"
+          }
+        },
+        "INFDRMOpinionChanges": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "INFDRMOpinionChanges"
+          }
+        },
+        "IsApproveMinorChangesProcess": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "IsApproveMinorChangesProcess"
+          }
+        },
+        "Customer.BinInn": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Customer.BinInn"
+          }
+        },
+        "GarantyProject.Account": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "GarantyProject.Account"
+          }
+        },
+        "StatementStage.IsFinish": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "StatementStage.IsFinish"
+          }
+        },
+        "Bank.BinInn": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Bank.BinInn"
+          }
+        },
+        "City.Region": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "City.Region"
+          }
+        },
+        "City.District": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "City.District"
+          }
+        },
+        "District.Region": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "District.Region"
+          }
+        },
+        "GuaranteeProgram.ProgramName": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "GuaranteeProgram.ProgramName"
+          }
+        },
+        "EntryPointsCount": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 3,
+            "aggregationType": 1,
+            "columnPath": "[EntryPoint:EntityId].Id",
+            "subFilters": {
+              "items": {
+                "64be627d-d619-4183-87ee-b1a9ebe0252e": {
+                  "filterType": 1,
+                  "comparisonType": 3,
+                  "isEnabled": true,
+                  "trimDateTimeParameterToDate": false,
+                  "leftExpression": {
+                    "expressionType": 0,
+                    "columnPath": "IsActive"
+                  },
+                  "rightExpression": {
+                    "expressionType": 2,
+                    "parameter": {
+                      "dataValueType": 1,
+                      "value": true
+                    }
+                  }
+                }
+              },
+              "logicalOperation": 0,
+              "isEnabled": true,
+              "filterType": 6
+            }
+          }
+        },
+        "CreditProvidingCount": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 1,
+            "functionType": 2,
+            "functionArgument": {
+              "expressionType": 0,
+              "columnPath": "[PledgeInGuarantee:Guarantee].Id"
+            },
+            "aggregationType": 1
+          }
+        },
+        "TotalMarketCost": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 1,
+            "functionType": 2,
+            "functionArgument": {
+              "expressionType": 0,
+              "columnPath": "[PledgeInGuarantee:Guarantee].CreditProviding.MarketCost"
+            },
+            "aggregationType": 2
+          }
+        },
+        "TotalMortgageCost": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 1,
+            "functionType": 2,
+            "functionArgument": {
+              "expressionType": 0,
+              "columnPath": "[PledgeInGuarantee:Guarantee].MortgageCost"
+            },
+            "aggregationType": 2
+          }
+        },
+        "TotalCoveringPercent": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 1,
+            "functionType": 2,
+            "functionArgument": {
+              "expressionType": 0,
+              "columnPath": "[PledgeInGuarantee:Guarantee].CoveringPercent"
+            },
+            "aggregationType": 2
+          }
+        },
+        "TotalTaxInfoAmount": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "[VwTaxOrgInfo:GuaranteeId:Id].TotalAmount"
+          }
+        },
+        "TotalBccArrearsInfo": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "[VwBccArrearsInfo:GuaranteeId:Id].TotalAmount"
+          }
+        },
+        "AverageExpertRating": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "[VwExpertRatingTotals:Guarantee:Id].RatingSum"
+          }
+        }
+      }
+    },
+    "isDistinct": false,
+    "rowCount": -1,
+    "rowsOffset": -1,
+    "isPageable": false,
+    "allColumns": false,
+    "useLocalization": true,
+    "useRecordDeactivation": false,
+    "serverESQCacheParameters": {
+      "cacheLevel": 0,
+      "cacheGroup": "",
+      "cacheItemName": ""
+    },
+    "queryOptimize": false,
+    "useMetrics": false,
+    "querySource": 0,
+    "ignoreDisplayValues": false,
+    "isHierarchical": false
+  },
+  "guarantee_file": {
+    "rootSchemaName": "GuaranteeFile",
+    "operationType": 0,
+    "includeProcessExecutionData": true,
+    "filters": {
+      "items": {
+        "entityFilterGroup": {
+          "items": {
+            "masterRecordFilter": {
+              "filterType": 1,
+              "comparisonType": 3,
+              "isEnabled": true,
+              "trimDateTimeParameterToDate": false,
+              "leftExpression": {
+                "expressionType": 0,
+                "columnPath": "Guarantee"
+              },
+              "rightExpression": {
+                "expressionType": 2,
+                "parameter": {
+                  "dataValueType": 1,
+                  "value": "{guarantee_id}"
+                }
+              }
+            },
+            "0c40db70-f3e2-4fd2-a999-e7fa53fe60cf": {
+              "filterType": 1,
+              "comparisonType": 3,
+              "isEnabled": true,
+              "trimDateTimeParameterToDate": false,
+              "leftExpression": {
+                "expressionType": 0,
+                "columnPath": "Guarantee"
+              },
+              "rightExpression": {
+                "expressionType": 2,
+                "parameter": {
+                  "dataValueType": 1,
+                  "value": "{guarantee_id}"
+                }
+              }
+            }
+          },
+          "logicalOperation": 0,
+          "isEnabled": true,
+          "filterType": 6
+        }
+      },
+      "logicalOperation": 0,
+      "isEnabled": true,
+      "filterType": 6
+    },
+    "columns": {
+      "items": {
+        "Id": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Id"
+          }
+        },
+        "Name": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Name"
+          }
+        },
+        "Type": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Type"
+          }
+        },
+        "Version": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Version"
+          }
+        },
+        "CreatedBy": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CreatedBy"
+          }
+        },
+        "Notes": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "Notes"
+          }
+        },
+        "CreatedOn": {
+          "caption": "Дата создания",
+          "orderDirection": 2,
+          "orderPosition": 1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "CreatedOn"
+          }
+        },
+        "INFfiletype": {
+          "caption": "Тип документа",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "INFfiletype"
+          }
+        },
+        "INFfileCategory": {
+          "caption": "Вид документа",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "INFfileCategory"
+          }
+        },
+        "INFfileGroup": {
+          "caption": "Группа",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 0,
+            "columnPath": "INFfileGroup"
+          }
+        },
+        "EntryPointsCount": {
+          "caption": "",
+          "orderDirection": 0,
+          "orderPosition": -1,
+          "isVisible": true,
+          "expression": {
+            "expressionType": 3,
+            "aggregationType": 1,
+            "columnPath": "[EntryPoint:EntityId].Id",
+            "subFilters": {
+              "items": {
+                "ec549594-0ec5-465e-9744-a6d480a5363e": {
+                  "filterType": 1,
+                  "comparisonType": 3,
+                  "isEnabled": true,
+                  "trimDateTimeParameterToDate": false,
+                  "leftExpression": {
+                    "expressionType": 0,
+                    "columnPath": "IsActive"
+                  },
+                  "rightExpression": {
+                    "expressionType": 2,
+                    "parameter": {
+                      "dataValueType": 1,
+                      "value": true
+                    }
+                  }
+                }
+              },
+              "logicalOperation": 0,
+              "isEnabled": true,
+              "filterType": 6
+            }
+          }
+        }
+      }
+    },
+    "isDistinct": false,
+    "rowCount": 10,
+    "rowsOffset": 0,
+    "isPageable": true,
+    "allColumns": false,
+    "useLocalization": true,
+    "useRecordDeactivation": false,
+    "serverESQCacheParameters": {
+      "cacheLevel": 0,
+      "cacheGroup": "",
+      "cacheItemName": ""
+    },
+    "queryOptimize": false,
+    "useMetrics": false,
+    "querySource": 0,
+    "ignoreDisplayValues": false,
+    "conditionalValues": null,
+    "isHierarchical": false
+  }
+}
