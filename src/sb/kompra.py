@@ -1,29 +1,20 @@
 from __future__ import annotations
 
-import dataclasses
 import json
 import logging
 import os
-import re
 import time
-import traceback
-from collections.abc import Generator
-from datetime import date, datetime, timedelta
-from json.decoder import JSONDecodeError
+from datetime import datetime
+from enum import IntEnum, StrEnum
 from pathlib import Path
 from time import sleep
 from types import TracebackType
-from typing import Any, Literal, NamedTuple, Type, TypedDict, cast, override
-from urllib.parse import urljoin
+from typing import Any, Literal, NamedTuple, Type, override
 
-import httpx
-import pandas as pd
-from dateutil.relativedelta import relativedelta
-from httpx import Client, Cookies, Headers, RequestError, Response
-from playwright.sync_api import Browser, FrameLocator, Page, sync_playwright
-from pydantic import BaseModel, ValidationError, validator
+from playwright.sync_api import sync_playwright
+from pydantic import BaseModel, ConfigDict, ValidationError, validator
+from pydantic.alias_generators import to_camel
 
-from sb.structures import Registry
 from utils.request_handler import RequestHandler
 
 logger = logging.getLogger("DAMU")
@@ -41,38 +32,20 @@ class SessionNotAuthenticatedError(Exception): ...
 class TokenError(Exception): ...
 
 
-class CompanyNotFetchedRequestError(Exception): ...
-
-
-class CompanyNotFetchedError(Exception): ...
-
-
-class OwnerNotFetchedRequestError(Exception): ...
-
-
-class OwnerNotFetchedError(Exception): ...
-
-
-class CertificateNotFetchedRequestError(Exception): ...
-
-
-class CertificateNotFetchedError(Exception): ...
-
-
 class DataNotFetchedRequestError(Exception): ...
 
 
 class DataNotFetchedError(Exception): ...
 
 
-class Company(BaseModel):
-    class Kato(BaseModel):
-        id: int
-        parent_id: int
-        code: str
-        name_kz: str
-        name_ru: str
+class Status(StrEnum):
+    YES = "YES"
+    NO = "NO"
+    SYNC = "SYNC"
+    INIT = "INIT"
 
+
+class Company(BaseModel):
     class Oked(BaseModel):
         code: str
         name_kz: str
@@ -93,7 +66,6 @@ class Company(BaseModel):
     law_address: str
     ownership: str
     ip: bool
-    kato: Kato
     oked: Oked
     kbe: str
     krp: Krp
@@ -125,7 +97,7 @@ class Owner(BaseModel):
     founders_ul_risk_factor: str
 
     @validator("last_updated", "appointment_date", pre=True)
-    def parse_dates(cls, v: str):
+    def parse_dates(cls, v: str) -> datetime:
         return datetime.strptime(v, "%d.%m.%Y")
 
 
@@ -150,9 +122,54 @@ class Properties(NamedTuple):
 
 
 class AdmFinesStatus(NamedTuple):
-    status: bool
+    status: Status
     total_count: int
     unpaid: int
+
+
+class TaxArrear(BaseModel):
+    class TaxOrg(BaseModel):
+        class TaxPayer(BaseModel):
+            class BccArrear(BaseModel):
+                bcc: str
+                bcc_name_ru: str
+                bcc_name_kz: str
+                tax_arrear: float
+                poena_arrear: float
+                percent_arrear: float
+                fine_arrear: float
+                total_arrear: float
+
+            iin_bin: str
+            name_ru: str
+            name_kz: str
+            bcc_arrears_info: list[BccArrear]
+            tax_arrear: float
+            poena_arrear: float
+            percent_arrear: float
+            fine_arrear: float
+            total_arrear: float
+
+        char_code: str
+        name_ru: str
+        name_kz: str
+        report_acrual_date: datetime
+        total_arrear: float
+        total_tax_arrear: float
+        pension_contribution_arrear: float
+        social_contribution_arrear: float
+        social_healthInsurance_arrear: float
+        tax_payer_info: list[TaxPayer]
+
+    send_time: str
+    iin_bin: str
+    total_arrear: float
+    total_tax_arrear: float
+    pension_contribution_arrear: float
+    social_contribution_arrear: float
+    social_health_insurance_arrear: float
+    tax_org_info: list[TaxOrg]
+    name: str
 
 
 class RawSummary(BaseModel):
@@ -164,29 +181,85 @@ class RawSummary(BaseModel):
         status: str
         data: list[Tag]
 
+        @validator("status", pre=True)
+        def parse_status(cls, status: str) -> Status:
+            return Status(status)
+
     risk: Record
     attention: Record
     positive: Record
 
 
+class CaseType(IntEnum):
+    CIVIL = 1
+    CRIMINAL = 2
+    ADMIN = 3
+
+
+class Case(BaseModel):
+    category: str
+    number: str
+    part: str
+    type_id: CaseType
+    date: datetime | None
+    id: int
+    organ: str
+    plaintiff: str | None
+    defendant: str | None
+    role: str | None
+    result: str
+    status: str | None
+    year: int
+
+    @validator("type_id", pre=True)
+    def parse_status(cls, type_id: int) -> CaseType:
+        return CaseType(type_id)
+
+
+class Cases:
+    def __init__(self, cases: list[Case] | None = None) -> None:
+        if cases:
+            self._cases: list[Case] = cases
+        else:
+            self._cases = []
+
+    def append(self, case: Case) -> None:
+        if not isinstance(case, Case):
+            raise TypeError(f"Expected item of type {self._type.__name__}")
+        self._cases.append(case)
+
+    def __getitem__(self, index: int) -> Case:
+        return self._cases[index]
+
+    def __len__(self) -> int:
+        return len(self._cases)
+
+    def __iter__(self):
+        return iter(self._cases)
+
+    def has_cases(self, case_type: CaseType, max_delta: int = 3) -> bool:
+        if case_type != CaseType.CRIMINAL:
+            today = datetime.fromisoformat(os.environ["today"])
+            return any(
+                abs(today.year - case.year) <= max_delta
+                for case in self
+                if case.type_id == case_type
+            )
+        else:
+            return any(case.type_id == case_type for case in self)
+
+    def remove_cases(self, case_type: CaseType) -> None:
+        self._cases = [case for case in self if case.type_id != case_type]
+
+    def __repr__(self) -> str:
+        return str(self._cases)
+
+
 class CaseHistory(BaseModel):
-    class Case(BaseModel):
-        category: str
-        number: str
-        part: str
-        type_id: int
-        date: datetime | None
-        id: int
-        organ: str
-        plaintiff: str | None
-        defendant: str | None
-        role: str | None
-        result: str
-        status: str | None
-        year: int
+    model_config = ConfigDict(arbitrary_types_allowed=True)
 
     identifier: str
-    content: list[Case]
+    content: Cases
     size: int
     total_pages: int
     total_elements: int
@@ -197,6 +270,87 @@ class CaseHistory(BaseModel):
     plaintiff_count: int
     defendant_count: int
     no_role_count: int
+
+    @validator("content", pre=True)
+    def parse_content(cls, content: list[dict[str, Any]]) -> Cases:
+        return Cases([Case(**case) for case in content])
+
+
+class Relation(BaseModel):
+    identifier: str
+    name: str
+
+
+class Affiliate(NamedTuple):
+    id: str
+    name: str
+
+
+class RawRiskAPI(BaseModel):
+    model_config = ConfigDict(
+        alias_generator=to_camel, populate_by_name=True, from_attributes=True
+    )
+
+    class RiskType(BaseModel):
+        id: int
+        name: str
+
+    class TaxDebt(BaseModel):
+        class TaxOrg(BaseModel):
+            class TaxPayer(BaseModel):
+                class BccArrear(BaseModel):
+                    bcc: str
+                    bcc_name_ru: str
+                    bcc_name_kz: str
+                    tax_arrear: float
+                    poena_arrear: float
+                    percent_arrear: float
+                    fine_arrear: float
+                    total_arrear: float
+
+                iin_bin: str
+                name_ru: str
+                name_kz: str
+                bcc_arrears_info: list[BccArrear]
+                tax_arrear: float
+                poena_arrear: float
+                percent_arrear: float
+                fine_arrear: float
+                total_arrear: float
+
+            name_kz: str
+            name_ru: str
+            char_code: str
+            total_arrear: str
+            tax_payer_info: list[TaxPayer]
+
+        name: str
+        iin_bin: str
+        send_time: datetime
+        tax_org_info: list[TaxOrg]
+
+    class DebtorLeaveRK(BaseModel):
+        sum: int
+        date: datetime
+        debtor: str
+        number: str
+        status: str | None
+        essence: str
+        claimant: str
+        debtor_bin: str | None
+        debtor_iin: str
+        ip_start_date: datetime
+        ban_start_date: datetime
+        court_executive: str
+        document_executive: str
+
+    type: RiskType
+    content: list[TaxDebt | DebtorLeaveRK] | dict[str, Any]
+    status: Status
+
+    @validator("status", pre=True)
+    def parse_status(cls, status: str) -> Status:
+        return Status(status)
 
 
 class Token(NamedTuple):
@@ -228,6 +382,7 @@ class Kompra(RequestHandler):
         user: str,
         password: str,
         base_url: str,
+        api_token: str,
         download_folder: Path,
         token_cache_path: Path,
         user_agent: str,
@@ -235,6 +390,7 @@ class Kompra(RequestHandler):
         super().__init__(user, password, base_url, download_folder)
         self.token_cache_path = token_cache_path
         self.user_agent = user_agent
+        self.api_token = api_token
 
         self._token: Token | None = None
 
@@ -253,6 +409,9 @@ class Kompra(RequestHandler):
             "Cache-Control": "no-cache",
         }
 
+        self.playwright = sync_playwright().start()
+        self.browser = self.playwright.chromium.launch(headless=True)
+
     @property
     def token(self) -> Token:
         if self._token:
@@ -261,8 +420,15 @@ class Kompra(RequestHandler):
                 return self._token
             else:
                 # logger.debug("Token has been expired, refreshing")
-                self.refresh(self._token)
-                return self._token
+                if not self.refresh(self._token):
+                    self.login()
+
+                if self._token:
+                    return self._token
+                else:
+                    raise TokenError(
+                        "Something went wrong while load/refreshing access token"
+                    )
 
         if self.token_cache_path.exists():
             if self.token_cache_path.stat().st_size == 0:
@@ -413,10 +579,10 @@ class Kompra(RequestHandler):
             headers=headers,
         )
         if not response:
-            raise CompanyNotFetchedRequestError()
+            raise DataNotFetchedRequestError()
 
         if not hasattr(response, "json"):
-            raise CompanyNotFetchedError()
+            raise DataNotFetchedError()
 
         data = response.json()
 
@@ -439,10 +605,10 @@ class Kompra(RequestHandler):
             headers=headers,
         )
         if not response:
-            raise OwnerNotFetchedRequestError()
+            raise DataNotFetchedRequestError()
 
         if not hasattr(response, "json"):
-            raise OwnerNotFetchedError()
+            raise DataNotFetchedError()
 
         data = response.json()
 
@@ -473,10 +639,10 @@ class Kompra(RequestHandler):
         )
 
         if not response:
-            raise CertificateNotFetchedRequestError()
+            raise DataNotFetchedRequestError()
 
         if not hasattr(response, "json"):
-            raise CertificateNotFetchedError()
+            raise DataNotFetchedError()
 
         data = response.json()
         certificate = Certificate(**data)
@@ -527,7 +693,7 @@ class Kompra(RequestHandler):
             raise DataNotFetchedError()
 
         data = response.json()
-        status: bool = data["status"] == "YES"
+        status: Status = Status(data["status"])
         total_count: int = data["total_count"]
         unpaid: int = data["unpaid"]
 
@@ -536,129 +702,273 @@ class Kompra(RequestHandler):
         )
         return adm_fines_status
 
-    def risk_tax_arrear_status(self, iin: str) -> bool:
-        headers = self.client.headers.copy()
-        headers["Content-Type"] = "application/json"
-        headers["Authorization"] = f"Bearer {self.token.access_token}"
-
-        response = self.request(
-            method="get",
-            path=f"https://gateway.kompra.kz/risk_factor_core/{iin}/tax-arrears/status",
-            overwrite_path=True,
-            headers=headers,
-        )
-
-        if not response:
-            raise DataNotFetchedRequestError()
-
-        if not hasattr(response, "json"):
-            raise DataNotFetchedError()
-
-        data = response.json()
-        status = data["status"] == "YES"
-        return status
-
-    def risk_mock_taxpayer(self, iin: str) -> bool:
-        headers = self.client.headers.copy()
-        headers["Content-Type"] = "application/json"
-        headers["Authorization"] = f"Bearer {self.token.access_token}"
-
-        response = self.request(
-            method="get",
-            path=f"https://gateway.kompra.kz/risk_factor_core/{iin}/mock_taxpayer/status",
-            overwrite_path=True,
-            headers=headers,
-        )
-
-        if not response:
-            raise DataNotFetchedRequestError()
-
-        if not hasattr(response, "json"):
-            raise DataNotFetchedError()
-
-        data = response.json()
-        print(f"{response.text!r}")
-        status = data["status"] == "YES"
-        return status
-
     def _get_risks(self, iin: str) -> dict[str, bool]:
-        with sync_playwright() as playwright:
-            logger.info("Playwright started")
-            browser = playwright.chromium.launch(headless=True)
-            with browser:
-                logger.info("Browser launched")
-                context = browser.new_context(ignore_https_errors=True)
+        context = self.browser.new_context(ignore_https_errors=True)
+        with context:
+            page = context.new_page()
+            page.goto(self.base_url)
+            page.locator("button.button:nth-child(4)").click()
 
-                page = context.new_page()
-                page.goto(self.base_url)
-                page.locator("button.button:nth-child(4)").click()
+            page.locator("#auth-email").fill(self.user)
+            page.locator('input[name="password"]').fill(self.password)
 
-                page.locator("#auth-email").fill(self.user)
-                page.locator('input[name="password"]').fill(self.password)
+            with page.expect_response("https://kompra.kz/oauth/token") as info:
+                page.locator(
+                    "form.ng-dirty:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > button:nth-child(1)"
+                ).click()
+            resp = info.value
+            if resp.status != 200 and not resp.ok:
+                logger.error(f"Status - {resp.status}, text - {resp.json()}")
+                raise SessionNotAuthenticatedError()
 
-                with page.expect_response(
-                    "https://kompra.kz/oauth/token"
-                ) as info:
-                    page.locator(
-                        "form.ng-dirty:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > button:nth-child(1)"
-                    ).click()
-                resp = info.value
-                if resp.status != 200 and not resp.ok:
-                    raise SessionNotAuthenticatedError()
+            logger.info("Session authenticated")
 
-                logger.info("Session authenticated")
+            page.goto(f"https://kompra.kz/ru/card/company/{iin}")
+            sleep(5)
 
-                page.goto(f"https://kompra.kz/ru/card/company/{iin}")
+            risks: dict[str, str] = {}
+            for current_retry in range(5):
+                raw = page.evaluate(
+                    "() => [...document.querySelectorAll('.details__risks .alert__header')].map(el => el.textContent.trim())"
+                )
 
-                risks: dict[str, bool] = {}
-                while True:
-                    raw = page.evaluate(
-                        "() => [...document.querySelectorAll('.details__risks .alert__header')].map(el => el.textContent.trim())"
-                    )
+                has_malformed = False
 
-                    for text in raw:
-                        if "СЕРВИС НЕДОСТУПЕН" in text:
-                            continue
-
-                        try:
-                            key, value = text.strip().split("  ")
-                            status = value == "ДА"
-                            if status:
-                                risks[key.strip()] = status
-                        except ValueError:
-                            if "СЕРВИС НЕДОСТУПЕН" in text:
-                                raise ServiceNotAvailableError()
-                            logger.debug(f"Malformed string: {text}")
-                            sleep(1)
-                            break
-                    else:
-                        logger.debug(f"Risks count: {len(risks)}")
+                for text in raw:
+                    key, value = f"{text.strip()}  ".split("  ", maxsplit=1)
+                    logger.debug(f"{key=!r}, {value=!r}")
+                    has_malformed = not value or value == "СЕРВИС НЕДОСТУПЕН"
+                    risks[key.strip()] = value.strip()
+                else:
+                    logger.debug(f"Risks count: {len(risks)}")
+                    if not has_malformed:
                         break
 
-                logger.info(f"Risks fetched")
-                logger.info(f"Risks count: {len(risks)}")
-                return risks
+            res = {
+                key: val == "ДА"
+                for key, val in risks.items()
+                if val and val != "СЕРВИС НЕДОСТУПЕН"
+            }
+
+            logger.info("Risks fetched")
+            logger.info(f"Risks count: {len(res)}")
+
+            return res
+
+    def _get_risks_api(self, iin: str) -> dict[str, bool]:
+        params = {"identifier": iin, "api-token": self.api_token}
+
+        response = self.request(
+            method="get", path="/api/v2/reliability-list", params=params
+        )
+
+        if not response:
+            raise DataNotFetchedRequestError()
+
+        if not hasattr(response, "json"):
+            raise DataNotFetchedError()
+
+        data = response.json()
+        raw_risks: list[RawRiskAPI] = []
+        for row in data:
+            try:
+                raw_risks.append(RawRiskAPI(**row))
+            except ValidationError as err:
+                for e in err.errors():
+                    logger.error(e)
+                raise err
+
+        risks: dict[str, bool] = {
+            row.type.name: status
+            for row in raw_risks
+            if (status := (row.status == "YES"))
+        }
+
+        return risks
 
     def get_risks(
-        self, iin: str, max_retries: int = 5, time_between: int = 60
+        self,
+        type: Literal["api", "browser"],
+        iin: str,
+        max_retries: int = 5,
+        time_between: int = 10,
     ) -> dict[str, bool]:
+        _get_risks = self._get_risks_api if type == "api" else self._get_risks
+
+        risks = None
+
         for _ in range(max_retries):
             try:
-                return self._get_risks(iin)
+                risks = _get_risks(iin)
+                return risks
             except ServiceNotAvailableError:
                 logger.debug(
                     f"Service currently unavailable. Sleeping for {time_between}..."
                 )
                 sleep(time_between)
                 continue
-        raise ServiceNotAvailableError
+
+        if not risks:
+            raise ValueError()
+
+        return risks
+
+    def get_relations(self, iin: str, is_too: bool) -> list[Relation]:
+        headers = self.client.headers.copy()
+        headers["Content-Type"] = "application/json"
+        headers["Authorization"] = f"Bearer {self.token.access_token}"
+
+        params = {"page": "1", "page_size": "20"}
+        path = (
+            f"https://gateway.kompra.kz/participation/{iin}/list"
+            if is_too
+            else f"https://gateway.kompra.kz/participation/fl/{iin}/list"
+        )
+
+        response = self.request(
+            method="get",
+            path=path,
+            overwrite_path=True,
+            params=params,
+            headers=headers,
+        )
+        if not response:
+            # raise DataNotFetchedRequestError()
+            return []
+
+        if not hasattr(response, "json"):
+            raise DataNotFetchedError()
+
+        data = response.json()
+        relations = [Relation(**row) for row in data.get("content", [])]
+        return relations
+
+    def get_relation_status(self, iin: str) -> Status:
+        headers = self.client.headers.copy()
+        headers["Content-Type"] = "application/json"
+        headers["Authorization"] = f"Bearer {self.token.access_token}"
+
+        response = self.request(
+            method="get",
+            path=f"https://gateway.kompra.kz/relations/{iin}/status",
+            overwrite_path=True,
+            headers=headers,
+        )
+        if not response:
+            raise DataNotFetchedRequestError()
+
+        if not hasattr(response, "json"):
+            raise DataNotFetchedError()
+
+        data = response.json()
+        status = Status(data["status"])
+        return status
+
+    def start_schema_generation(self, iin: str) -> Status:
+        headers = self.client.headers.copy()
+        headers["Content-Type"] = "application/json"
+        headers["Authorization"] = f"Bearer {self.token.access_token}"
+
+        response = self.request(
+            method="get",
+            path=f"https://gateway.kompra.kz/relations/{iin}/start",
+            overwrite_path=True,
+            headers=headers,
+        )
+        if not response:
+            raise DataNotFetchedRequestError()
+
+        if not hasattr(response, "json"):
+            raise DataNotFetchedError()
+
+        data = response.json()
+        status = Status(data["status"])
+        while status != Status.YES:
+            status = self.get_relation_status(iin)
+            logger.info(
+                "Waiting until relation schema is completed. "
+                f"Current status - {status}..."
+            )
+            sleep(5)
+
+        return status
+
+    def get_relation_schema(self, iin: str) -> dict[str, Any]:
+        headers = self.client.headers.copy()
+        headers["Content-Type"] = "application/json"
+        headers["Authorization"] = f"Bearer {self.token.access_token}"
+
+        response = self.request(
+            method="get",
+            path=f"https://gateway.kompra.kz/relations/{iin}/content",
+            overwrite_path=True,
+            headers=headers,
+        )
+        if not response:
+            raise DataNotFetchedRequestError()
+
+        if not hasattr(response, "json"):
+            raise DataNotFetchedError()
+
+        data = response.json()
+        return data
+
+    def get_affiliates(self, iin: str) -> list[Affiliate]:
+        def add_affiliate(
+            _affiliates: list[Affiliate], obj: dict[str, Any]
+        ) -> None:
+            if not obj:
+                return
+
+            id = obj.get("identifier", "")
+            name = obj.get("ip_name") or obj.get("name", "")
+            affiliate = Affiliate(id=id, name=name)
+            if affiliate not in _affiliates:
+                _affiliates.append(affiliate)
+
+        schema = self.get_relation_schema(iin)
+
+        affiliates: list[Affiliate] = []
+        for node in (schema.get("content") or {}).values():
+            add_affiliate(affiliates, node)
+            add_affiliate(affiliates, node.get("owner") or {})
+
+            records = (
+                node.get("founders", [])
+                + node.get("founded", [])
+                + node.get("directed", [])
+                + node.get("involvement", [])
+                + node.get("branch", [])
+            )
+            for record in records:
+                add_affiliate(affiliates, record)
+        return affiliates
+
+    def get_tax_arrears(self, iin: str) -> TaxArrear:
+        headers = self.client.headers.copy()
+        headers["Content-Type"] = "application/json"
+        headers["Authorization"] = f"Bearer {self.token.access_token}"
+
+        response = self.request(
+            method="get",
+            path=f"https://gateway.kompra.kz/risk_factor_core/fl/{iin}/tax-arrears/details",
+            overwrite_path=True,
+            headers=headers,
+        )
+        if not response:
+            raise DataNotFetchedRequestError()
+
+        if not hasattr(response, "json"):
+            raise DataNotFetchedError()
+
+        data = response.json()
+        tax_arrear = TaxArrear(**data)
+        return tax_arrear
 
     def get_reliability_summary(self, iin: str) -> set[str]:
         headers = self.client.headers.copy()
         headers["Content-Type"] = "application/json"
         headers["Authorization"] = f"Bearer {self.token.access_token}"
-
-        params = {"ip": "false"}
 
         raw_summary: RawSummary | None = None
         risk_is_synced = False
@@ -710,7 +1020,7 @@ class Kompra(RequestHandler):
 
         return summary
 
-    def get_case_status(self, iin: str) -> bool:
+    def get_case_status(self, iin: str) -> Status:
         headers = self.client.headers.copy()
         headers["Content-Type"] = "application/json"
         headers["Authorization"] = f"Bearer {self.token.access_token}"
@@ -729,10 +1039,10 @@ class Kompra(RequestHandler):
 
         data = response.json()
 
-        status = data["status"] == "YES"
+        status = Status(data["status"])
         return status
 
-    def get_case_history(self, iin: str) -> CaseHistory:
+    def get_case_history(self, iin: str) -> Cases:
         headers = self.client.headers.copy()
         headers["Content-Type"] = "application/json"
         headers["Authorization"] = f"Bearer {self.token.access_token}"
@@ -767,9 +1077,9 @@ class Kompra(RequestHandler):
             raise DataNotFetchedError()
 
         data = response.json()
-        print(data)
         case_history = CaseHistory(**data)
-        return case_history
+        cases = case_history.content
+        return cases
 
     @override
     def __exit__(
@@ -779,4 +1089,6 @@ class Kompra(RequestHandler):
         exc_tb: TracebackType | None,
     ) -> None:
         self._token = None
+        self.browser.close()
+        self.playwright.stop()
         super().__exit__(exc_type, exc_val, exc_tb)

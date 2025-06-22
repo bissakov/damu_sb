@@ -3,7 +3,7 @@ from __future__ import annotations
 import logging
 from pathlib import Path
 from types import TracebackType
-from typing import Literal, Type
+from typing import Any, Literal, Type
 from urllib.parse import urljoin
 
 from httpx import Client, Cookies, Headers, RequestError, Response
@@ -52,7 +52,8 @@ class RequestHandler:
     ) -> Response | None:
         if response.is_error:
             logger.warning(
-                f"FAILURE - {method.upper()} {response.status_code} to {path!r}"
+                f"FAILURE - {method.upper()} {response.status_code} "
+                f"to {path!r}. Text - {response.content}"
             )
             return None
 

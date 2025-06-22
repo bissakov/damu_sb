@@ -1,8 +1,4 @@
-import dataclasses
-import json
-import re
 from pathlib import Path
-from typing import Pattern
 
 MONTHS = {
     "янв": "01",
@@ -40,8 +36,8 @@ MONTHS = {
 
 
 class Registry:
-    def __init__(self, download_folder: Path) -> None:
-        self.download_folder: Path = download_folder
+    def __init__(self) -> None:
+        self.download_folder: Path = Path("downloads")
         self.download_folder.mkdir(parents=True, exist_ok=True)
 
         self.resources_folder: Path = Path("resources")

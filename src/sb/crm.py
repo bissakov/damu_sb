@@ -4,22 +4,43 @@ import dataclasses
 import json
 import logging
 import re
-import traceback
-from collections.abc import Generator
-from datetime import date, datetime, timedelta
+from datetime import datetime
+from functools import cached_property
 from json.decoder import JSONDecodeError
 from pathlib import Path
 from types import TracebackType
-from typing import Any, Type, cast, override
+from typing import Any, NamedTuple, Type, cast, override
 
-import pandas as pd
-from dateutil.relativedelta import relativedelta
+from docx import Document
+from docx.table import Table
 from pydantic import BaseModel
 
-from sb.structures import Registry
 from utils.request_handler import RequestHandler
 
 logger = logging.getLogger("DAMU")
+
+
+def parse_table(table: Table, filter_empty: bool = False) -> list[list[str]]:
+    table_data = []
+    for row in table.rows:
+        row_data = []
+        for cell in row.cells:
+            text = cell.text.strip().replace("\n", "")
+            if filter_empty and not text:
+                continue
+            row_data.append(text)
+        if any(row_data):
+            table_data.append(row_data)
+    return table_data
+
+
+class Participant(NamedTuple):
+    role: str
+    name: str
+    iin: str
+    id_number: str | None
+    id_date: str | None
+    is_too: bool
 
 
 class Activity(BaseModel):
@@ -28,6 +49,7 @@ class Activity(BaseModel):
     responsible_person: str
     guarantee: Guarantee | None = None
     files: list[GuaranteeFile] = dataclasses.field(default_factory=list)
+    participants: list[Participant] = dataclasses.field(default_factory=list)
 
 
 class Guarantee(BaseModel):
@@ -43,10 +65,60 @@ class Guarantee(BaseModel):
 
 @dataclasses.dataclass
 class GuaranteeFile:
-    file_id: str
-    file_path: Path
+    id: str
+    path: Path
     created_on: datetime
-    file_type: str
+    type: str
+
+    @cached_property
+    def is_26(self) -> bool:
+        if not self.path.name.endswith("docx"):
+            return False
+
+        docx = Document(str(self.path))
+        paras = docx.paragraphs
+
+        first_lines = " ".join(
+            text
+            for i in range(len(paras))
+            if (text := paras[i].text.strip().lower())
+        )
+        first_lines = re.sub(r"[^\w \n]", "", first_lines)
+        is_26 = "лица уч" in first_lines
+
+        return is_26
+
+    def get_participants(self) -> list[Participant]:
+        if not self.is_26:
+            return []
+
+        docx = Document(str(self.path))
+
+        table_data = parse_table(docx.tables[0])
+
+        participants: list[Participant] = []
+        for row in table_data[1:]:
+            row = row[::-1]
+            id_date = row[0]
+            id_number = row[1] or None
+            iin = row[2]
+            name = row[3]
+            role = row[4]
+            is_too = (
+                "тоо" in name.lower() or "товарищество с огр" in name.lower()
+            )
+
+            participant = Participant(
+                role=role,
+                name=name,
+                iin=iin,
+                id_number=id_number,
+                id_date=id_date,
+                is_too=is_too,
+            )
+            participants.append(participant)
+
+        return participants
 
 
 class Schemas:
@@ -62,7 +134,29 @@ class Schemas:
                 self.schemas = json.load(f)
 
     def activities(self) -> dict[str, Any]:
-        return self.schemas["activities"]
+        schema = self.schemas["activities"]
+        if __debug__:
+            schema["filters"]["items"]["6e11d8a7-f1ce-434f-8bf7-2ba016568326"][
+                "items"
+            ]["CustomFilters"]["items"][
+                "09873e0e-f308-4681-8a30-20752ef19cfd"
+            ] = {
+                "filterType": 4,
+                "comparisonType": 4,
+                "isEnabled": True,
+                "trimDateTimeParameterToDate": False,
+                "leftExpression": {"expressionType": 0, "columnPath": "Status"},
+                "rightExpressions": [
+                    {
+                        "expressionType": 2,
+                        "parameter": {
+                            "dataValueType": 10,
+                            "value": "201cfba8-58e6-df11-971b-001d60e938c6",
+                        },
+                    }
+                ],
+            }
+        return schema
 
     def guarantee(self, guarantee_id: str) -> dict[str, Any]:
         schema = self.schemas["guarantee"]
@@ -263,13 +357,14 @@ class CRM(RequestHandler):
             file_id: str = row["Id"]
             file_name: str = row["Name"]
 
-            if not file_name.endswith(".docx"):
-                continue
+            # if not file_name.endswith(".docx"):
+            #     continue
 
             created_on = datetime.fromisoformat(cast(str, row["CreatedOn"]))
             file_type: str = row["Type"]["displayValue"]
 
             file_name, file_ext = file_name.rsplit(".", maxsplit=1)
+            file_ext = file_ext.lower()
             file_name = f"{file_name.strip()}.{file_ext}"
 
             file_path = download_folder / Path(
@@ -282,13 +377,14 @@ class CRM(RequestHandler):
                 )
 
             guaranatee_file = GuaranteeFile(
-                file_id=file_id,
-                file_path=file_path,
+                id=file_id,
+                path=file_path,
                 created_on=created_on,
-                file_type=file_type,
+                type=file_type,
             )
 
-            files.append(guaranatee_file)
+            if file_ext == "docx":
+                files.append(guaranatee_file)
 
         return files
 
@@ -312,176 +408,6 @@ class CRM(RequestHandler):
             f.write(response.content)
 
         return True
-
-    def find_project(self, protocol_id: str) -> dict[str, Any] | None:
-        if not self.is_logged_in:
-            self.login()
-
-        json_data = self.schemas.project_info(protocol_id)
-
-        response = self.request(
-            method="post",
-            path="0/DataService/json/SyncReply/SelectQuery",
-            json=json_data,
-        )
-        if not response:
-            self.is_logged_in = False
-            return None
-
-        if not hasattr(response, "json"):
-            return None
-
-        data = response.json()
-        rows: list[dict[str, Any]] = data.get("rows")
-
-        if not rows:
-            return None
-
-        row = rows[0]
-
-        return row
-
-    def get_project_data(self, project_id: str) -> dict[str, Any] | None:
-        if not self.is_logged_in:
-            self.login()
-
-        json_data = self.schemas.project(project_id)
-
-        response = self.request(
-            method="post",
-            path="0/DataService/json/SyncReply/SelectQuery",
-            json=json_data,
-        )
-        if not response:
-            self.is_logged_in = False
-            return None
-
-        if hasattr(response, "json"):
-            data = response.json()
-            rows = data.get("rows")
-            assert isinstance(rows, list)
-            return rows[0]  # type: ignore
-        else:
-            return None
-
-    def fetch_agreement_data(self, project_id: str) -> dict[str, Any] | None:
-        if not self.is_logged_in:
-            self.login()
-
-        json_data = self.schemas.agreements(project_id)
-
-        response = self.request(
-            method="post",
-            path="0/DataService/json/SyncReply/SelectQuery",
-            json=json_data,
-        )
-        if not response:
-            self.is_logged_in = False
-            return None
-
-        if hasattr(response, "json"):
-            data = response.json()
-            rows = data.get("rows")
-            assert isinstance(rows, list)
-            if rows:
-                return rows[0]  # type: ignore
-
-        return None
-
-    def fetch_vypiska_id(self, project_id: str) -> dict[str, Any] | None:
-        if not self.is_logged_in:
-            self.login()
-
-        json_data = self.schemas.vypiska_project(project_id)
-        response = self.request(
-            method="post",
-            path="0/DataService/json/SyncReply/SelectQuery",
-            json=json_data,
-        )
-        if not response:
-            self.is_logged_in = False
-            return None
-
-        if not hasattr(response, "json"):
-            return None
-
-        data = response.json()
-        rows = data.get("rows")
-        assert isinstance(rows, list)
-
-        vypiska_row = next(
-            (
-                row
-                for row in rows
-                if row.get("Type", {}).get("displayValue") == "Выписка ДС"
-            ),
-            None,
-        )
-
-        return vypiska_row
-
-    def download_vypiska(
-        self, contract_id: str, file_id: str, file_name: str
-    ) -> bool:
-        folder_path = self.download_folder / contract_id / "vypiska"
-        folder_path.mkdir(exist_ok=True)
-
-        file_path = folder_path / file_name
-
-        response = self.request(
-            method="get",
-            path=f"0/rest/FileService/GetFile/7b332db9-3993-4136-ac32-09353333cc7a/{file_id}",
-        )
-        if not response:
-            self.is_logged_in = False
-            return False
-
-        with file_path.open("wb") as f:
-            f.write(response.content)
-
-        return True
-
-    def download_vypiskas(
-        self, contract_id: str, project_id: str
-    ) -> dict[str, Any] | None:
-        if not self.is_logged_in:
-            self.login()
-
-        vypiska_row = self.fetch_vypiska_id(project_id=project_id)
-        if not isinstance(vypiska_row, dict):
-            return None
-
-        vypiska_id = vypiska_row.get("Id")
-        if not vypiska_id:
-            return None
-
-        json_data = self.schemas.vypiska(vypiska_id=vypiska_id)
-        response = self.request(
-            method="post",
-            path="0/DataService/json/SyncReply/SelectQuery",
-            json=json_data,
-        )
-        if not response:
-            self.is_logged_in = False
-            return None
-
-        if not hasattr(response, "json"):
-            return None
-
-        data = response.json()
-        rows = data.get("rows")
-        assert isinstance(rows, list)
-
-        for row in rows:
-            file_id, file_name = row.get("Id"), row.get("Name")
-            file_name = file_name.replace("/", " ").replace("\\", " ")
-            if not file_id or not file_name:
-                continue
-            self.download_vypiska(
-                contract_id=contract_id, file_id=file_id, file_name=file_name
-            )
-
-        return vypiska_row
 
     @override
     def __exit__(
